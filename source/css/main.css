@@ -2920,7 +2920,7 @@ table.alt tbody tr td {
       padding: 0; }
       .pwdbook > section.split > section {
         padding: 3rem 4rem 1rem 4rem ;
-        border-top: solid 2px #e2e2e2; }
+        border-top: dotted 2px #e2e2e2; }
         .pwdbook > section.split > section:first-child {
           padding: 5rem 4rem 1rem 4rem ;
           border-top: 0; }
