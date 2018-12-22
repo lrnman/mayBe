@@ -1,4 +1,4 @@
-var mpw, error = null;
+var mpw, error = null ;
 
 function updateMPW() {
     mpw = null;
@@ -29,7 +29,8 @@ function update(working) {
         $('#submit').val('确认身份');
         if (error == null) {
             $('#identity_info').text($('#userName')[0].value);
-            $('.scrolly').trigger('click');
+            if(skel.breakpoint("medium").active)
+                $('.scrolly').trigger('click');
         } else {
             // $('#identity_info').text(error);
         }
@@ -66,6 +67,7 @@ function selectText(element) {
 
 
 $(function() {
+
     $('#identity form').on('submit', function() {
         updateMPW();
         return false;
@@ -76,5 +78,4 @@ $(function() {
     $('#sitePassword').on('click', function() {
         selectText(this);
     });
-
 });
