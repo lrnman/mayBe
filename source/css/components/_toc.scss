@@ -3,6 +3,8 @@
 /*_tag*/
 .toc-box{
   padding: 2rem 4rem 3rem 4rem !important;
+  @include vendor('user-select', 'none');
+  cursor: default;
 
   h1 {
     font-size: 3rem;

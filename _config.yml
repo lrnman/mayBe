@@ -4,6 +4,7 @@ menu:
   generic page:
   tags: tags
   me: me
+  password book: pwdbook
 
 icons:
 #  |前的值会作为font awesome icon的名字， 如果| 后面有值，则是font awesome icon的名字。
@@ -19,21 +20,19 @@ icons:
 unnamed: (unnamed)
 
 #banner
-banner_who: Jerry
-banner_thumbs: ../images/banner.jpg
-banner_video: https://pixelarity.com/items/demos/formula/cyan/images/banner.mp4
-banner_h1: '" fight forever'
+banner_thumbs: ../images/banner/1.JPG
+banner_video: ../videos/banner/1.mp4
+banner_h1: '" I am what  <br /> I am.'
 
 #layout text
-intro_h1: This is<br />Massively
-intro_p: A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-        						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.
+intro_h1: Who is<br />EVERYDAY HERO
+intro_p:  关于<a href="/me/">我</a>
 
 #header text
-logo_text: Massively
+logo_text: EVERYDAYHERO
 
 # Miscellaneous
-favicon: /favicon.png
+favicon: /favicon.jpg
 
 # stylesheets loaded in the <head>
 stylesheets:
@@ -58,74 +57,85 @@ scripts:
 date_format: MM DD, YYYY
 
 #me page right nav
-intro: Intro
+intro: Hey.
 what_i_do: What I Do
 who_i_am: Who I Am
 my_work: My Work
 contact: Contact
 
 #me main
+
+msg_server_url: https://api.55to.top/email
+
 #intro
 intro_text:
   h: Hey.
-  p: Welcome to <strong>Big Picture</strong> a responsive site template designed
-      					by <a href="https://html5up.net">HTML5 UP</a>, built on <a href="http://skel.io">Skel</a>,
-      					and released for free under the <a href="https://html5up.net/license">Creative Commons Attribution license</a>.
+  p: 最近过得怎么样？
 
 #do
 do_text:
   h: What I Do
-  p: Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-     					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-     					id varius justo euismod in. Curabitur egestas consectetur magna.
+  p: Nothing.
 
 #am
 am_text:
   h: Who I Am
-  p: Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-     					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-     					id varius justo euismod in. Curabitur egestas consectetur magna.
+  p: Yeah，我是廖建。我就是我。
 
 #am
 work_text:
   h: My Work
-  p: Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-     					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-     					id varius justo euismod in. Curabitur egestas consectetur magna.
+  p: 嗯哼，怎么样？
 
 #urls of work images
 # 1、大图
 # 2、缩略图
 # 3、描述
+# 4、data-poptrox
 work_imgs:
   p1:
-  - /images/fulls/01.jpg
-  - /images/thumbs/01.jpg
-  - Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
+  - /images/me/fulls/1.png
+  - /images/me/thumbs/1.png
+  - SKATING towards the sun!!!!!
+  -
   p2:
-  - /images/fulls/02.jpg
-  - /images/thumbs/02.jpg
-  - amet et sapien sed elementum egestas dolore condimentum.
-  p3:
-  - /images/fulls/03.jpg
-  - /images/thumbs/03.jpg
-  - Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum. Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu, id varius justo euismod in. Curabitur egestas consectetur magna.
-  p4:
-  - /images/fulls/04.jpg
-  - /images/thumbs/04.jpg
-  - egestas dolore
-  p5:
-  - /images/fulls/05.jpg
-  - /images/thumbs/05.jpg
-  - Fusce blandit
-  p6:
-  - /images/fulls/06.jpg
-  - /images/thumbs/06.jpg
-  - blandit ultrices sapien
+  - /images/me/fulls/2.JPG
+  - /images/me/thumbs/2.JPG
+  - 《雪花》
+  -
 
-
+#   p1:
+#    - /images/me/fulls/1.png
+#    - /images/me/thumbs/1.png
+#    - SKATING towards the sun!!!!!
+#    -
+#    p2:
+#    - /images/me/fulls/2.JPG
+#    - /images/me/thumbs/2.JPG
+#    - 《雪花》
+#    -
+#    p3:
+#    - https://c.55to.top
+#    - /images/me/thumbs/3.jpg
+#    - mayBe主题，就是我现在博客这个。
+#    - iframe
+#    p4:
+#    - https://eowg.55to.top
+#    - /images/me/thumbs/4.jpg
+#    - 官方网站，https://eowg.55to.top
+#    - iframe
+#    p5:
+#    - https://jkg.55to.top
+#    - /images/me/thumbs/5.png
+#    - 吾吾金矿，https://jkg.55to.top
+#    - iframe
+#    p6:
+#    - https://todog.55to.top
+#    - /images/me/thumbs/6.png
+#    - TODO by backbone, https://todog.55to.top
+#    - iframe
 
 #contact
 contact_text:
   h: Say Hello.
-  p: Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
+  p: 嘿，如果你想向我推销东西，有四个字给你，谢绝推销。不管怎样，如果你美，请在下面给我留言（ECS过期了，留言功能失效）

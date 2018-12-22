@@ -13,7 +13,7 @@
 		overflow: hidden;
 
 		> .bg {
-			position: absolute;
+			position: fixed;
 			top: 0;
 			left: 0;
 			width: 100%;
@@ -51,6 +51,21 @@
 			body.is-loading & {
 				&:before {
 					opacity: 1;
+				}
+			}
+
+			body.loading & {
+				&:before {
+					opacity: 1;
+					@include vendor('transition', 'none');
+					@include vendor('animation', 'show-bg .75s ease-in-out');
+					@include vendor('animation-fill-mode', 'forwards');
+				}
+
+				@include keyframes('show-bg') {
+					100% {
+						opacity: 0;
+					}
 				}
 			}
 		}

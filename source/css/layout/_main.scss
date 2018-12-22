@@ -44,12 +44,16 @@
 						margin: 0 0 _size(element-margin) 0;
 					}
 
-					>p {
+					>.outer {
 						display: flex;
 						justify-content: center;
 
-						span {
+						.inner {
 							max-width: 600px
+						}
+
+						.inner p {
+							display: inline;
 						}
 					}
 				}
@@ -60,7 +64,11 @@
 			}
 
 			img {
+				display: block;
 				max-width: 100%;
+				width: auto;
+				height: auto;
+				margin: 0 auto;
 			}
 
 			@include breakpoint(large) {
@@ -109,6 +117,12 @@
 					text-align: center;
 				}
 
+				h2 {
+					a {
+						word-break: break-all;
+					}
+				}
+
 				> :last-child {
 					margin-bottom: 0;
 				}
@@ -127,10 +141,12 @@
 			}
 
 			.end {
-				display: flex;
-				justify-content: center;
+				@include vendor('user-select', 'none');
+				cursor: default;
+				@include vendor('display', 'flex');
+				@include vendor('justify-content', 'center');
 				p {
-					align-self: center;
+					@include vendor('align-self', 'center');
 				}
 			}
 

@@ -66,6 +66,8 @@
 
     table {
       display: block;
+      position: relative;
+      overflow-y: hidden;
 
       tr {
         border: 0;
@@ -102,46 +104,3 @@
   }
 }
 
-.go-back,
-.go-catalog {
-  letter-spacing: .01em;
-  font-size: .9rem;
-  padding: 4px 0;
-  color: #fff;
-
-  i {
-    position: relative;
-  }
-
-  &:hover {
-    i {
-      animation: back_arrow .8s infinite alternate ease-in-out;
-    }
-  }
-}
-
-.go-catalog {
-  &:hover {
-    i {
-      animation: catalog_icon .8s infinite alternate ease-in-out;
-    }
-  }
-}
-
-@keyframes back_arrow {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: -10px;
-  }
-}
-
-@keyframes catalog_icon {
-  0% {
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.5);
-  }
-}

@@ -8,6 +8,7 @@
         <li class="<%- is_post()? 'active':'' %>"><a href="javascript:;" class="generic"><%- __(keys[1]) %></a></li>
         <li class="<%- is_current(theme.menu[keys[2]])? 'active':'' %>"><a href="<%- url_for(theme.menu[keys[2]]) %>"><%- __(keys[2]) %></a></li>
         <li><a href="<%- url_for(theme.menu[keys[3]]) %>"><%- __(keys[3]) %></a></li>
+        <li class="<%- is_current(theme.menu[keys[4]])? 'active':'' %>"><a href="<%- url_for(theme.menu[keys[4]]) %>"><%- __(keys[4]) %></a></li>
     </ul>
     <ul class="icons">
         <% if(is_current('tags/')) { %>
@@ -26,7 +27,7 @@
             if (theme.icons[icon]) {
                 var names = icon.split('|');
         %>
-            <li><a href="<%- theme.icons[icon] %>" target="_blank" class="icon fa-<%- names.length > 1 ? names[1] : names[0] %>"><span class="label"><%- names[0] %></span></a></li>
+            <li><a href="<%- theme.icons[icon] %>" target="_blank" class="icon fa fa-<%- names.length > 1 ? names[1] : names[0] %>"><span class="label"><%- names[0] %></span></a></li>
         <% }} %>
     </ul>
 </nav>

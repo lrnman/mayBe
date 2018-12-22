@@ -1,5 +1,5 @@
 <%- partial('_partial/head') %>
-<body class="is-loading" id="top">
+<body class="<%- is_home() && page.current == 1? 'is-loading hide': 'loading' %>" id="top">
 
 <% if (is_home() && page.current == 1) { %>
  <%- partial('_partial/banner') %>
@@ -26,6 +26,7 @@
   <div id="main">
     <%- body %>
   </div>
+
 
   <!-- Nav -->
   <%- partial('_partial/footer') %>

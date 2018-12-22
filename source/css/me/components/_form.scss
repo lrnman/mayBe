@@ -24,29 +24,40 @@
 		}
 
 		> .actions {
+
 			margin: (_size(element-margin) * 0.75) 0 0 0 !important;
 
-			&.loading::after {
-				content: '';
-				display: inline-block;
-				background-image: url(./images/loading.png);
-				background-size: contain;
-				background-repeat: no-repeat;
-				width: 26px;
-				height: 26px;
-				position: absolute;
-				animation: loading-ic .6s linear infinite;
-			}
+			li {
+				position: relative;
 
-			@keyframes loading-ic {
-				0% {}
-				100% {
-					transform: rotate(360deg);
+				&::after {
+					content: '';
+					display: block;
+					font-family: FontAwesome;
+					font-style: normal;
+					font-weight: normal;
+					font-size: 1em;
+					text-transform: none !important;
+					color: #bcc7c7;
+					content: '\f1ce';
+					cursor: default;
+					position: absolute;
+					right: -1em;
+					top: 0;
+					width: 1em;
+					@include vendor('animation', ('spinner-show 1.5s 1 0.25s ease forwards', 'spinner-hide 0.25s ease-in-out forwards !important'));
+					@include vendor('transform-origin', '49% 48%');
 				}
 			}
 
+			&.loading li::after {
+				@include vendor('transform-origin', '49% 48%');
+				@include vendor('animation', ('spinner-show 1.5s 1 0.25s ease forwards', 'spinner-rotate 0.75s infinite linear !important'));
+			}
+
+
 			input[type="submit"] {
-				transition: all .8s;
+				@include vendor('transition', 'all .8s');
 			}
 
 			input[type="submit"].loading {

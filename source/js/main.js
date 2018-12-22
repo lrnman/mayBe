@@ -47,7 +47,7 @@
 
             on = function () {
 
-                $bg
+               /* $bg
                     .removeClass('fixed')
                     .css('transform', 'matrix(1,0,0,1,0,0)');
 
@@ -58,7 +58,7 @@
 
                         $bg.css('transform', 'matrix(1,0,0,1,0,' + (pos * intensity) + ')');
 
-                    });
+                    });*/
 
             };
 
@@ -83,7 +83,7 @@
             // Enable everywhere else.
             else {
 
-                skel.on('!large -large', on);
+                // skel.on('!large -large', on);
                 skel.on('+large', off);
 
             }
@@ -113,34 +113,45 @@
             $video = $('#banner').find('.video'),
             $navPanelToggle, $navPanel, $navPanelInner;
 
+        // Disable animations/transitions until the page has loaded.
+        $window.on('load', function () {
+            setTimeout(function () {
+                $body.removeClass('is-loading');
+            }, 1);
+        });
+
+        //获取导航条显示状态
+        var navIsShowed = false;
+        if (window.innerWidth > 980) {
+            navIsShowed = true;
+        }
+        var navOf = navIsShowed ? $nav.outerHeight() - 1 : 0;
 
         /*
             page index
         */
-        var $banner = $('#banner');
         if ($banner.length) {
             //banner显示状态
             if (sessionStorage.getItem('banner-unfirst')) {
+                $body.removeClass('hide');
                 $banner.remove();
             } else {
+                //banner video 资源加载
+                var video = $banner.data('src');
+                if(!skel.vars.mobile && skel.vars.IEVersion > 9) {
+                    $window.on('load', function () {
+                        $video.replaceWith($('<video src="' + video + '" autoplay loop muted></video>'));
+                    });
+                }
+
                 sessionStorage.setItem('banner-unfirst', true);
                 var timeId = setInterval(function () {
                     if ($banner.height() <= 3) {
+                        $body.removeClass('hide');
                         $banner.remove();
                         clearInterval(timeId);
                     }
                 }, 100);
-
-                //banner video 资源加载
-                if($(window).innerWidth() > 736 ) {
-                    var $vi = $('<video autoplay loop></video>');
-                    $video.find('source').each(function (index, item) {
-                        var $source  = $(item).prop('src', $video.find('source').data('src'));
-                        var $st = $source.clone();
-                        $vi.append($st);
-                    });
-                    $video.replaceWith($vi);
-                }
             }
         }
 
@@ -206,18 +217,6 @@
 
         }
 
-
-
-
-        // Disable animations/transitions until the page has loaded.
-        $window.on('load', function () {
-            window.setTimeout(function () {
-                $body.removeClass('is-loading');
-            }, 1);
-        });
-
-
-
         /*
             page tags
          */
@@ -226,7 +225,7 @@
             // Update scrolly links.
             $tagCloudA.scrolly({
                 speed: 200,
-                offset: $nav.outerHeight() - 1
+                offset: navOf
             });
 
             var $signals = $tag.find('.signal');
@@ -244,17 +243,16 @@
             });
         }
 
-
         /*
          page post
          */
         $('.go-catalog').scrolly({
             speed: 200,
-            offset: $nav.outerHeight() - 1
+            offset: navOf
         });
         $('.toc-box a').scrolly({
             speed: 200,
-            offset: $nav.outerHeight() - 1
+            offset: navOf
         });
 
         // Prioritize "important" elements on medium.
@@ -342,62 +340,64 @@
                 .css('transition', 'none');
 
 
-
-        //计算距离的初始位置
-        var init = $main.offset().top + 50;
-        var oldScrollY = init;
-        var pre = init;
-        //true 下， false 上
-        var towards = true;
-        var distance = 0;
-        $(window).on('scroll', function () {
-            if ($(window).scrollTop() < init) {
-                oldScrollY = pre = init;
-                towards = true;
-                return;
-            }
-            var newScrollY = $(window).scrollTop();
-            if (oldScrollY - newScrollY > 0) {
-                if (towards == false) {
-                    distance = Math.abs(pre - newScrollY);
-                } else {
-                    pre = newScrollY;
-                    distance = 0;
+        //导航条在显示的状态下
+        if (navIsShowed) {
+            //计算距离的初始位置
+            var init = $main.offset().top + 50;
+            var oldScrollY = init;
+            var pre = init;
+            //true 下， false 上
+            var towards = true;
+            var distance = 0;
+            $window.on('scroll', function () {
+                if ($window.scrollTop() < init) {
+                    oldScrollY = pre = init;
+                    towards = true;
+                    return;
                 }
-                towards = false;
-            } else if (oldScrollY - newScrollY < 0) {
-                if (towards == true) {
-                    distance = Math.abs(pre - newScrollY);
-                } else {
-                    pre = newScrollY;
-                    distance = 0;
+                var newScrollY = $window.scrollTop();
+                if (oldScrollY - newScrollY > 0) {
+                    if (towards == false) {
+                        distance = Math.abs(pre - newScrollY);
+                    } else {
+                        pre = newScrollY;
+                        distance = 0;
+                    }
+                    towards = false;
+                } else if (oldScrollY - newScrollY < 0) {
+                    if (towards == true) {
+                        distance = Math.abs(pre - newScrollY);
+                    } else {
+                        pre = newScrollY;
+                        distance = 0;
+                    }
+                    towards = true;
                 }
-                towards = true;
-            }
-            // console.log(distance, ', pre: ', pre, 'towards: ', towards);
-            oldScrollY = newScrollY;
-        });
+                // console.log(distance, ', pre: ', pre, 'towards: ', towards);
+                oldScrollY = newScrollY;
+            });
 
-        //导航条相关
-        $(window).on('scroll', function () {
-            //设置头部导航条的位置
-            if (!$nav.hasClass('attach-top') && ($(window).scrollTop() >= $main.offset().top - $nav.height())) {
-                $nav.addClass('attach-top');
-            } else if ($nav.hasClass('attach-top') && ($(window).scrollTop() < $main.offset().top - $nav.height())) {
-                $nav.removeClass('attach-top');
-            }
 
-            // 导航条的状态
-            if ($(window).scrollTop() < init) {
-                $nav.removeClass('hide');
-                return;
-            }
-            if (towards && distance > 110 && !$nav.hasClass('hide')) {
-                $nav.addClass('hide');
-            } else if (!towards && distance > 50 && $nav.hasClass('hide')) {
-                $nav.removeClass('hide');
-            }
-        });
+            $window.on('scroll', function () {
+                //设置头部导航条的位置
+                if (!$nav.hasClass('attach-top') && ($window.scrollTop() >= $main.offset().top - $nav.height())) {
+                    $nav.addClass('attach-top');
+                } else if ($nav.hasClass('attach-top') && ($window.scrollTop() < $main.offset().top - $nav.height())) {
+                    $nav.removeClass('attach-top');
+                }
+
+                // 导航条的状态
+                if ($window.scrollTop() < init) {
+                    $nav.removeClass('hide');
+                    return;
+                }
+                if (towards && distance > 110 && !$nav.hasClass('hide')) {
+                    $nav.addClass('hide');
+                } else if (!towards && distance > 50 && $nav.hasClass('hide')) {
+                    $nav.removeClass('hide');
+                }
+            });
+        }
 
 
         //设置小屏幕分页的下拉框点击跳转事件
@@ -410,12 +410,13 @@
         //画廊相关
         var $galleryWrapper = $('.gallery-wrapper');
         if ($galleryWrapper.length) {
+
             //    设置“画廊”
             var $gallery = $('.gallery');
             $gallery.poptrox({
                 baseZIndex: 10001,
-                useBodyOverflow: true,
-                usePopupEasyClose: true,
+                useBodyOverflow: false,
+                usePopupEasyClose: false,
                 overlayColor: '#1f2328',
                 overlayOpacity: 0.65,
                 usePopupDefaultStyling: false,
@@ -424,6 +425,13 @@
                 windowMargin: 10,
                 usePopupNav: true
             });
+
+            $window.resize(function(){
+                /*var wh = $galleryWrapper.width() * (parseInt($galleryWrapper.data('row'))*30 + 1.6)/100;
+                $galleryWrapper.css('height', wh);*/
+                var h=$gallery.find('a').width() / 5 * 3;
+                $gallery.find('a').css('height', h);
+            }).trigger('resize');
 
             // Touch mode.
             skel.on('change', function () {

@@ -5,7 +5,7 @@ var keys = Object.keys(theme.menu);
 %>
 
 <%- partial('_partial/head') %>
-	<body>
+	<body class="is-loading">
 
 		<!-- Header -->
 			<header id="header">
@@ -15,6 +15,7 @@ var keys = Object.keys(theme.menu);
 						<li class="r-hide"><a href="javascript:;" class="generic"><%- __(keys[1]) %></a></li>
 						<li class="r-hide"><a href="<%- url_for(theme.menu[keys[2]]) %>"><%- __(keys[2]) %></a></li>
 						<li class="active"><a href="<%- url_for(theme.menu[keys[3]]) %>"><%- __(keys[3]) %></a></li>
+						<li class="r-hide"><a href="<%- url_for(theme.menu[keys[4]]) %>"><%- __(keys[4]) %></a></li>
 					</ul>
 				</nav>
 				<nav class="right">
@@ -80,7 +81,7 @@ var keys = Object.keys(theme.menu);
 							%>
 
 							<article class="from-<%- from ? 'left' : 'right' %>">
-								<a href="<%- theme.work_imgs[key][0] %>" class="image fit" style="background-image: url(<%- theme.work_imgs[key][1] %>); background-size: cover; background-position: center center" title="<%- theme.work_imgs[key][2] %>"><img  title="<%- theme.work_imgs[key][2] %>" alt=""></a>
+								<a href="<%- theme.work_imgs[key][0] %>" data-poptrox="<%- theme.work_imgs[key][3] %>" class="image fit" style="background-image: url(<%- theme.work_imgs[key][1] %>); background-size: cover; background-position: center center" title="<%- theme.work_imgs[key][2] %>"><img  title="<%- theme.work_imgs[key][2] %>" alt=""></a>
 							</article>
 
 							<%
@@ -101,12 +102,12 @@ var keys = Object.keys(theme.menu);
 						<p><%- theme.contact_text.p %></p>
 					</header>
 					<div class="box">
-						<form method="get" action="https://api.55to.top/email">
+						<form method="get" action="<%- theme.msg_server_url %>">
 							<div class="field half first"><input type="text" name="name" placeholder="Name" required /></div>
 							<div class="field half"><input type="email" name="email" placeholder="Email" required /></div>
 							<div class="field"><textarea name="message" placeholder="Message" rows="6" required></textarea></div>
 							<ul class="actions">
-								<li><input type="submit" value="Send Message" /> <span class="report" style="display: none;"> <a href="mailto:1600136170@qq.com">报告错误</a></span></li>
+								<li><input type="submit" value="&ensp;&ensp;Leave&ensp;It&ensp;&ensp;" /> <span class="report" style="display: none;"> <a href="mailto:1600136170@qq.com">报告错误</a></span></li>
 							</ul>
 						</form>
 					</div>
@@ -128,10 +129,11 @@ var keys = Object.keys(theme.menu);
 
 				<!-- Menu -->
 					<ul class="menu">
-						<li>&copy; <%- date(Date.now(), 'YYYY') %> <a href="https://c.55to.top" target="_blank" alt="廖建" title="廖建">JERRY</a></li>
+						<li>&copy; <%- date(Date.now(), 'YYYY') %> <a href="<%- theme.url %>" target="_blank" alt="廖建" title="廖建"><%- theme.author %></a></li>
 						<li><%- __('design') %>: <%- link_to('https://html5up.net', 'HTML5 UP', {external: true}) %></li>
-						<li><%- __('theming') %>: <a href="https://c.55to.top" target="_blank" alt="廖建" title="廖建">JERRY</a></li>
+						<li><%- __('theming') %>: <a href="https://github.com/lrnman/mayBe" target="_blank" alt="廖建" title="廖建"><%- theme.author %></a></li>
 						<li><%- __('powerby') %>: <%- link_to('https://hexo.io', 'Hexo', {external: true}) %></li>
+						<li><p style="display: inline">Hosted by <a href="https://coding.net/pages" style="font-weight: bold">Coding Pages</a></p></li>
 					</ul>
 
 			</footer>

@@ -9,10 +9,13 @@
 	.poptrox-popup {
 		@include vendor('box-sizing', 'content-box');
 		background: #fff;
-		padding-bottom: 3em;
 		box-shadow: 0 0.1em 0.15em 0 rgba(0, 0, 0, 0.15);
 		min-height: inherit !important;
 		min-width: inherit !important;
+		max-height: 100% !important;
+		max-width: 100% !important;
+
+		padding-bottom: 3em;
 
 		.loader {
 			position: absolute;
@@ -46,6 +49,25 @@
 			}
 		}
 
+		.pic {
+			overflow:auto  !important;
+			-webkit-overflow-scrolling:touch  !important;
+
+			iframe {
+				$w: 96vw !important;
+				$h: 90vh !important;
+				width: $w;
+				height: $h;
+				min-width: $w;
+				min-height: $h;
+				max-width: $w;
+				max-height: $h;
+
+				overflow:auto  !important;
+				-webkit-overflow-scrolling:touch  !important;
+			}
+		}
+
 		.caption {
 			position: absolute;
 			bottom: 0;
@@ -65,24 +87,37 @@
 		.nav-previous {
 			@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
 			position: absolute;
-			top: 0;
-			width: 50%;
-			height: 100%;
+			top: 50%;
+			margin-top: -2rem;
+			margin-left: 1.2rem;
+			margin-right: 1.2rem;
+			width: 2rem;
+			height: 4rem;
 			opacity: 0;
 			cursor: pointer;
 			background: rgba(0, 0, 0, 0.01);
 			-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+			z-index: 10102;
 		}
 
 		.nav-next:before,
 		.nav-previous:before {
-			content: '';
+			color: #000;
+			font-family: FontAwesome;
+			content: '\f105';
+			font-size: 4rem;
+			text-shadow: 4px 0 2px #fff;
 			position: absolute;
-			width: 96px;
-			height: 64px;
-			background: url('images/poptrox-nav.svg');
-			top: calc(50% - 1.5em);
-			margin: -32px 0 0 0;
+			width: 2rem;
+			height: 4rem;
+			line-height: 4rem;
+			top: 50%;
+			margin: -2rem 0 0 0;
+			overflow: hidden;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			display: inline-block;
 		}
 
 		&:hover {
@@ -124,25 +159,29 @@
 			position: absolute;
 			top: 0;
 			right: 0;
-			width: 64px;
-			height: 64px;
+			width: 2rem;
+			height: 2rem;
+			margin-top: .2rem;
+			margin-right: 1.2rem;
 			text-indent: -9999px;
-			z-index: 2;
 			opacity: 0;
 			-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+			z-index: 10102;
 
 			&:before {
-				content: '';
-				display: block;
 				position: absolute;
-				right: 16px;
-				top: 16px;
-				width: 40px;
-				height: 40px;
+				text-indent: 0;
+				font-family: FontAwesome;
+				content: '\f057';
+				font-size: 2rem;
+				display: block;
+				width: 2rem;
+				height: 2rem;
+				line-height: 2rem;
+				color: #ffffff !important;
+				background-color: #000;
 				border-radius: 100%;
-				box-shadow: inset 0 0 0 2px #fff;
-				background: url('images/poptrox-closer.svg') center center;
-				color: _palette(bg) !important;
+				text-align: center;
 			}
 		}
 
@@ -166,20 +205,8 @@
 
 		@include breakpoint(small) {
 			.nav-next:before,
-			.nav-previous:before {
-				width: 48px;
-				height: 32px;
-				background-size: contain;
-				margin: -16px 0 0 0;
-			}
-
+			.nav-previous:before,
 			.closer:before {
-				right: 12px;
-				top: 12px;
-				width: 20px;
-				height: 20px;
-				box-shadow: inset 0 0 0 1px #fff;
-				background-size: contain;
 				opacity: 0.65;
 			}
 		}

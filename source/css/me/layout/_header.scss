@@ -59,7 +59,7 @@
 						left: 50%;
 						opacity: 0;
 						color: #bcc7c7;
-						transition: opacity .3s linear;
+						@include vendor('transition', 'opacity .3s linear');
 					}
 					&.current i {
 						opacity: 1;
@@ -78,7 +78,8 @@
 			a {
 				padding: 0 2rem;
 				font-weight: 900;
-				transition: all .5s ease, color .2s ease-in-out;
+				text-transform: uppercase;
+				@include vendor('transition', ('all .5s ease', 'color .2s ease-in-out'));
 			}
 
 			.generic {

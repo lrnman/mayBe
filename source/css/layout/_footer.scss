@@ -198,6 +198,7 @@
 		width: calc(100% - #{_size(padding) * 2});
 		max-width: _size(wrapper);
 		z-index: 2;
+		@include vendor('user-select', 'none');
 
 		a {
 			color: inherit;

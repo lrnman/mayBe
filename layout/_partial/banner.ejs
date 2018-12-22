@@ -1,7 +1,8 @@
-<div class="banner fade-in" id="banner" style="background-image: url(<%- theme.banner_thumbs %>);">
-  <a href="/"><strong><%- theme.banner_who %></strong>'s blog</a>
-  <p class="video" autoplay loop>
-   <source data-src="<%- theme.banner_video %>" type="video/mp4">
-  </p>
+<div class="banner fade-in" id="banner" data-src="<%- theme.banner_video %>">
+   <img src="<%- theme.banner_thumbs %>" />
+  <a href="javascript:;"><strong><%- theme.author %></strong>'s blog</a>
+  <p class="video"></p>
   <h1><%- theme.banner_h1 %></h1>
+  <i class="fa fa-circle-o-notch fa-fw"></i>
+  <span class="sr-only">Loading...</span>
  </div>

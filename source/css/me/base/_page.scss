@@ -22,6 +22,14 @@
 		// Prevents animation/transition "flicker" on page load.
 		// Automatically added/removed by js/main.js.
 			&.is-loading {
+				padding: 0 !important;
+				margin: 0 !important;
+				width: 100vw !important;
+				height: 100vh !important;
+
+				position: fixed;
+				overflow: hidden !important;
+
 				*, *:before, *:after {
 					@include vendor('animation', 'none !important');
 					@include vendor('transition', 'none !important');
@@ -89,6 +97,14 @@
 	body {
 		text-decoration: none;
 
+		header,
+		footer,
+		h2,
+		p {
+			@include vendor('user-select', 'none');
+			cursor: default;
+		}
+
 		&:before {
 			@include vendor('animation', ('spinner-show 1.5s 1 0.25s ease forwards', 'spinner-hide 0.25s ease-in-out forwards !important'));
 			@include vendor('transform-origin', '50% 50%');
@@ -98,7 +114,7 @@
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
-			color: _palette(border);
+			color: #bcc7c7;
 			content: '\f1ce';
 			cursor: default;
 			display: block;

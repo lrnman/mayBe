@@ -12,6 +12,8 @@
 			'opacity 1s ease',
 			'transform 1s ease'
 		));
+		@include vendor('pointer-events', 'auto');
+		@include vendor('user-select', 'none');
 
 		position: relative;
 		cursor: default;

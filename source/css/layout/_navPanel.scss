@@ -96,13 +96,21 @@
 			.go-catalog {
 				color: inherit;
 				i {
-					animation: back_arrow .8s infinite alternate ease-in-out;
+					@include vendor('animation', 'back_arrow .8s infinite alternate ease-in-out');
 				}
 			}
 
 			.go-catalog {
 				i {
-					animation: catalog_icon .8s infinite alternate ease-in-out;
+					@include vendor('animation', 'catalog_icon .8s infinite alternate ease-in-out');
+				}
+			}
+
+			.go-top {
+				color: inherit;
+
+				i {
+					@include vendor('animation', 'top_arrow .8s infinite ease-in-out');
 				}
 			}
 

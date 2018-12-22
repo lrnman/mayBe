@@ -25,12 +25,10 @@
             $gallery = $('.gallery');
 
         // Disable animations/transitions until the page has loaded.
-        $body.addClass('is-loading');
-
         $window.on('load', function () {
             window.setTimeout(function () {
                 $body.removeClass('is-loading');
-            }, 0);
+            }, 1);
         });
 
         // Touch mode.
@@ -91,12 +89,10 @@
         // Gallery.
         $window.on('load', function () {
 
-
-
             $gallery.poptrox({
                 baseZIndex: 10001,
-                useBodyOverflow: true,
-                usePopupEasyClose: true,
+                useBodyOverflow: false,
+                usePopupEasyClose: false,
                 overlayColor: '#1f2328',
                 overlayOpacity: 0.65,
                 usePopupDefaultStyling: false,
@@ -312,7 +308,7 @@
             });
 
         // 导航条的显示状态
-        var isHided = false;
+        /*var isHided = false;
         $(window).on('scroll', function () {
             if (towards && distance > 100 && !isHided) {
                 isHided = true;
@@ -323,7 +319,7 @@
                 $header.stop(true);
                 $header.slideDown('fast');
             }
-        });
+        });*/
 
         //发送邮件
         var $form = $('form');
@@ -363,7 +359,7 @@
 
                     $submit.val('发送失败，请稍后重试');
                 },
-                timeout: 5000
+                timeout: 8600
             });
 
             //阻止表单默认行为

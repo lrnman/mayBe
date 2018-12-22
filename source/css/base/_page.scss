@@ -27,13 +27,31 @@
 
 		background-color: _palette(invert, bg);
 
+		&.hide {
+			padding: 0 !important;
+			margin: 0 !important;
+			width: 100vw !important;
+			height: 100vh !important;
+
+			position: fixed;
+			overflow: hidden;
+		}
+
 		// Prevents animation/transition "flicker" on page load.
 		// Automatically added/removed by js/main.js.
-			&.is-loading {
-				*, *:before, *:after {
-					@include vendor('animation', 'none !important');
-					@include vendor('transition', 'none !important');
-				}
+		&.is-loading {
+			padding: 0 !important;
+			margin: 0 !important;
+			width: 100vw !important;
+			height: 100vh !important;
+
+			position:fixed;
+			overflow: hidden;
+
+			*, *:before, *:after {
+				@include vendor('animation', 'none !important');
+				@include vendor('transition', 'none !important');
 			}
+		}
 
 	}

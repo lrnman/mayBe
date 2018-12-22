@@ -1,24 +1,31 @@
+主题基于hexo，你想要使用的话，请确保你已安装hexo系统。或者现在去下载并安装, ->[hexo官网](https://hexo.io)<-
+
 ## 安装主题
 1. 下载主题
 ```
 git clone git@github.com:lrnman/mayBe.git themes/mayBe
 ```
 2. 下载[环境](https://github.com/lrnman/mayBe-dev)，包括source文件夹，和scaffolds文件夹，并覆盖到你的项目里。
-3. 修改项目_config.yml文件的 ''' per_page: 5 ''' ,  ''' theme: mayBe '''
+3. 修改项目_config.yml文件的 `per_page: 5` ,  `theme: mayBe`
+
+## 已知问题
+- 在ios端的Safari上，me页画廊详情中iframe显示不正常
 
 ## 主题
 1. 支持标签，不支持分类
 2. 支持画廊
-3. 支持代码高亮
-4. 支持多语言
-5. 支持ajax发送留言（me页）
+3. 支持开启或关闭目录功能
+4. 支持代码高亮
+5. 支持多语言
+6. 支持ajax发送留言（me页)。后端代码请[参考](https://c.55to.top/2017/07/06/使用前后端分离技术，为mayBe主题增加留言功能支持/);
+7. 对页面文字，图片，视频进行快速、方便、自由定义
+8. 对浏览者保持良好的导向，且不影响页面的开阔性
 
 - 使用sass
 - 使用ejs
 
 ### 主题属性
 详情见主题_config.yml文件
-
 
 ## 文章构成
 ### 属性 （*必须）

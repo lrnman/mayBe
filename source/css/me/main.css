@@ -1,4 +1,4 @@
-@import url("./fonts-from-google.css");
+/* @import url('./fonts-from-google.css'); */
 @import url("../font-awesome.min.css");
 /*
 	Big Picture by HTML5 UP
@@ -53,15 +53,22 @@ body {
   background: #ffffff;
   height: 100%;
   min-width: 320px; }
-  body.is-loading *, body.is-loading *:before, body.is-loading *:after {
-    -moz-animation: none !important;
-    -webkit-animation: none !important;
-    -ms-animation: none !important;
-    animation: none !important;
-    -moz-transition: none !important;
-    -webkit-transition: none !important;
-    -ms-transition: none !important;
-    transition: none !important; }
+  body.is-loading {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    position: fixed;
+    overflow: hidden !important; }
+    body.is-loading *, body.is-loading *:before, body.is-loading *:after {
+      -moz-animation: none !important;
+      -webkit-animation: none !important;
+      -ms-animation: none !important;
+      animation: none !important;
+      -moz-transition: none !important;
+      -webkit-transition: none !important;
+      -ms-transition: none !important;
+      transition: none !important; }
 
 /* Spinner */
 @-moz-keyframes spinner-rotate {
@@ -271,6 +278,15 @@ body {
     z-index: -1; } }
 body {
   text-decoration: none; }
+  body header,
+  body footer,
+  body h2,
+  body p {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default; }
   body:before {
     -moz-animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-hide 0.25s ease-in-out forwards !important;
     -webkit-animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-hide 0.25s ease-in-out forwards !important;
@@ -286,7 +302,7 @@ body {
     font-style: normal;
     font-weight: normal;
     text-transform: none !important;
-    color: #e5e6e7;
+    color: #bcc7c7;
     content: '\f1ce';
     cursor: default;
     display: block;
@@ -536,20 +552,44 @@ form {
         padding: 0 0.75em 0 0; }
   form > .actions {
     margin: 1.5em 0 0 0 !important; }
-    form > .actions.loading::after {
-      content: '';
-      display: inline-block;
-      background-image: url(./images/loading.png);
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 26px;
-      height: 26px;
-      position: absolute;
-      animation: loading-ic .6s linear infinite; }
-@keyframes loading-ic {
-  100% {
-    transform: rotate(360deg); } }
+    form > .actions li {
+      position: relative; }
+      form > .actions li::after {
+        content: '';
+        display: block;
+        font-family: FontAwesome;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1em;
+        text-transform: none !important;
+        color: #bcc7c7;
+        content: '\f1ce';
+        cursor: default;
+        position: absolute;
+        right: -1em;
+        top: 0;
+        width: 1em;
+        -moz-animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-hide 0.25s ease-in-out forwards !important;
+        -webkit-animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-hide 0.25s ease-in-out forwards !important;
+        -ms-animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-hide 0.25s ease-in-out forwards !important;
+        animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-hide 0.25s ease-in-out forwards !important;
+        -moz-transform-origin: 49% 48%;
+        -webkit-transform-origin: 49% 48%;
+        -ms-transform-origin: 49% 48%;
+        transform-origin: 49% 48%; }
+    form > .actions.loading li::after {
+      -moz-transform-origin: 49% 48%;
+      -webkit-transform-origin: 49% 48%;
+      -ms-transform-origin: 49% 48%;
+      transform-origin: 49% 48%;
+      -moz-animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-rotate 0.75s infinite linear !important;
+      -webkit-animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-rotate 0.75s infinite linear !important;
+      -ms-animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-rotate 0.75s infinite linear !important;
+      animation: spinner-show 1.5s 1 0.25s ease forwards, spinner-rotate 0.75s infinite linear !important; }
     form > .actions input[type="submit"] {
+      -moz-transition: all .8s;
+      -webkit-transition: all .8s;
+      -ms-transition: all .8s;
       transition: all .8s; }
     form > .actions input[type="submit"].loading {
       background-color: #929392;
@@ -774,10 +814,12 @@ table {
   -ms-box-sizing: content-box;
   box-sizing: content-box;
   background: #fff;
-  padding-bottom: 3em;
   box-shadow: 0 0.1em 0.15em 0 rgba(0, 0, 0, 0.15);
   min-height: inherit !important;
-  min-width: inherit !important; }
+  min-width: inherit !important;
+  max-height: 100% !important;
+  max-width: 100% !important;
+  padding-bottom: 3em; }
   .poptrox-popup .loader {
     position: absolute;
     top: 50%;
@@ -809,6 +851,18 @@ table {
       text-align: center;
       top: 0;
       width: 2em; }
+  .poptrox-popup .pic {
+    overflow: auto  !important;
+    -webkit-overflow-scrolling: touch  !important; }
+    .poptrox-popup .pic iframe {
+      width: 96vw !important;
+      height: 90vh !important;
+      min-width: 96vw !important;
+      min-height: 90vh !important;
+      max-width: 96vw !important;
+      max-height: 90vh !important;
+      overflow: auto  !important;
+      -webkit-overflow-scrolling: touch  !important; }
   .poptrox-popup .caption {
     position: absolute;
     bottom: 0;
@@ -829,22 +883,35 @@ table {
     -ms-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
     position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
+    top: 50%;
+    margin-top: -2rem;
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+    width: 2rem;
+    height: 4rem;
     opacity: 0;
     cursor: pointer;
     background: rgba(0, 0, 0, 0.01);
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    z-index: 10102; }
   .poptrox-popup .nav-next:before,
   .poptrox-popup .nav-previous:before {
-    content: '';
+    color: #000;
+    font-family: FontAwesome;
+    content: '\f105';
+    font-size: 4rem;
+    text-shadow: 4px 0 2px #fff;
     position: absolute;
-    width: 96px;
-    height: 64px;
-    background: url("images/poptrox-nav.svg");
-    top: calc(50% - 1.5em);
-    margin: -32px 0 0 0; }
+    width: 2rem;
+    height: 4rem;
+    line-height: 4rem;
+    top: 50%;
+    margin: -2rem 0 0 0;
+    overflow: hidden;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block; }
   .poptrox-popup:hover .nav-next,
   .poptrox-popup:hover .nav-previous {
     opacity: 0.5; }
@@ -874,24 +941,28 @@ table {
     position: absolute;
     top: 0;
     right: 0;
-    width: 64px;
-    height: 64px;
+    width: 2rem;
+    height: 2rem;
+    margin-top: .2rem;
+    margin-right: 1.2rem;
     text-indent: -9999px;
-    z-index: 2;
     opacity: 0;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0); }
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    z-index: 10102; }
     .poptrox-popup .closer:before {
-      content: '';
-      display: block;
       position: absolute;
-      right: 16px;
-      top: 16px;
-      width: 40px;
-      height: 40px;
+      text-indent: 0;
+      font-family: FontAwesome;
+      content: '\f057';
+      font-size: 2rem;
+      display: block;
+      width: 2rem;
+      height: 2rem;
+      line-height: 2rem;
+      color: #ffffff !important;
+      background-color: #000;
       border-radius: 100%;
-      box-shadow: inset 0 0 0 2px #fff;
-      background: url("images/poptrox-closer.svg") center center;
-      color: #ffffff !important; }
+      text-align: center; }
   .poptrox-popup:hover .closer {
     opacity: 0.5; }
     .poptrox-popup:hover .closer:hover {
@@ -902,18 +973,8 @@ table {
     opacity: 1.0 !important; }
   @media screen and (max-width: 736px) {
     .poptrox-popup .nav-next:before,
-    .poptrox-popup .nav-previous:before {
-      width: 48px;
-      height: 32px;
-      background-size: contain;
-      margin: -16px 0 0 0; }
+    .poptrox-popup .nav-previous:before,
     .poptrox-popup .closer:before {
-      right: 12px;
-      top: 12px;
-      width: 20px;
-      height: 20px;
-      box-shadow: inset 0 0 0 1px #fff;
-      background-size: contain;
       opacity: 0.65; } }
 
 /* Gallery */
@@ -1249,6 +1310,9 @@ table {
           left: 50%;
           opacity: 0;
           color: #bcc7c7;
+          -moz-transition: opacity .3s linear;
+          -webkit-transition: opacity .3s linear;
+          -ms-transition: opacity .3s linear;
           transition: opacity .3s linear; }
         #header nav ul li.current i {
           opacity: 1; }
@@ -1259,6 +1323,10 @@ table {
     #header nav.left a {
       padding: 0 2rem;
       font-weight: 900;
+      text-transform: uppercase;
+      -moz-transition: all .5s ease, color .2s ease-in-out;
+      -webkit-transition: all .5s ease, color .2s ease-in-out;
+      -ms-transition: all .5s ease, color .2s ease-in-out;
       transition: all .5s ease, color .2s ease-in-out; }
     #header nav.left .generic {
       cursor: default; }
@@ -1514,22 +1582,22 @@ body {
 
 /* Intro */
 #intro {
-  background: url("images/overlay.png"), url("../../images/intro.jpg");
+  background: url("images/overlay.png"), url("../../images/me/intro.jpg");
   background-size: 256px 256px, cover;
   background-attachment: fixed, fixed;
-  background-position: top left, bottom center;
+  background-position: top left, top;
   background-repeat: repeat, no-repeat; }
 
 /* One */
 #one {
-  background: url("images/overlay.png"), url("../../images/one.jpg");
+  background: url("images/overlay.png"), url("../../images/me/one.jpg");
   background-size: 256px 256px, cover;
   background-attachment: fixed, fixed;
   background-position: top left, center center; }
 
 /* Two */
 #two {
-  background: url("images/overlay.png"), url("../../images/two.jpg");
+  background: url("images/overlay.png"), url("../../images/me/two.jpg");
   background-size: 256px 256px, cover;
   background-attachment: fixed, fixed;
   background-position: top left, center center; }
